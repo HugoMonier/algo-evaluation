@@ -14,18 +14,33 @@
  * dire un tableau qui contiendra de petits tableaux qui sont les paires ligne-colonne.
  * 
  */
- function mouvementsFou(ligne, colonne) {
-    return [
-        [ligne - 1, colonne - 1],
-        [ligne, colonne],
-        [ligne + 1, colonne + 1],
-    ]
+ function mouvdufou(ligne, colonne) {
+    var newTable = [];
+    var k = 1;
+    while(ligne+k <= 8 && colonne+k <= 8) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+    k = 1;
+    while(ligne+k <= 8 && colonne-k >= 1) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+    k = 1;
+    while(ligne-k >= 1 && colonne-k >= 1) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+
+    k = 1;
+    while(ligne-k >= 1 && colonne+k <= 8) {
+        newTable.push([ligne+k, colonne+k])
+        k++;
+    }
+    return newTable
 }
+console.log(mouvdufou(6, 6))
 
-/**
- * Ce log ne fait pas partie de l'exercice, ne vous en préoccupez donc pas, mais il vous aidera à afficher vos tests avec un joli formattage.
- */
- console.log(`Les movements d'un fou sont : ${mouvementsFou(4, 4).map(cell => `[${cell}]`)}`)
 
 
 
@@ -33,8 +48,8 @@
 
 
 /**
- * Programmer une fonction qui prend en paramètre un nombre, correspondant à la hauteur d'une pyramide et qui renvoie un tableau de caractères "*" et espace afin de construire
- * une pyramide avec la hauteur en argument.
+ * Programmer une fonction qui prend en paramètre un nombre, correspondant à la hauteur d'une Pyramide et qui renvoie un tableau de caractères "*" et espace afin de construire
+ * une Pyramide avec la hauteur en argument.
  * 
  * Exemple, pour une hauteur de 5 : ["    *    ", "   ***   ", "  *****  ", " ******* ", "*********"]
  * 
@@ -48,8 +63,19 @@
  * *********
  * 
  */
-function pyramide(hauteur) {
-    return ["    *    ", "   ***   ", "  *****  ", " ******* ", "*********"]
-}
+ function Pyramide(hauteur) {
+    var newTable = [];
+for (var i = 0; i < hauteur; i++) {
+        var starCount = i*2+1
+        var lengthBase = (hauteur-1)*2+1
+        var spaces = (lengthBase - starCount)/2
 
-pyramide(5).forEach(e => console.log(`${e}`))
+        var str = ''
+        str += ' '.repeat(spaces)
+        str += '*'.repeat(starCount)
+        str += ' '.repeat(spaces)
+        newTable.push(str)}
+    
+        return newTable
+}
+Pyramide(5).forEach(e => console.log(e))
