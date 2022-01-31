@@ -4,7 +4,17 @@
  * Exemple : [1, 2, 3] et ["apple", "orange", "banana"] renverra : [1, "apple", 2, "orange", 3, "banana"]
  */
 function combine(tableau1, tableau2) {
-
+        var newTable = [];
+        if (tableau1.length !== tableau2.length) return
+        for (var i = 0; i < tableau1.length; i++) {
+            newTable[i * 2] = tableau1[i];
+            newTable[i * 2 + 1] = tableau2[i];
+        }
+        return newTable;
+    }
+    var tableau1Combine = [1, 2, 3, 4];
+    var tableau2Combine = ['apple', 'banana', 'orange', 'lemon'];
+    console.log(combine(tableau1Combine, tableau2Combine));
 }
 
 /**
@@ -13,9 +23,17 @@ function combine(tableau1, tableau2) {
  * 
  * Par exemple : rotate([1, 2, 3, 4, 5], 2) renverra [4, 5, 1, 2, 3] 
  */
-function rotate(tableau, offset) {
-
+ function rotate(tableau, offset) {
+    var newTable = [];
+    var count = offset;
+    for (var i = 0; i < tableau.length; i++) {
+        if (i + count >= tableau.length) count = -i;
+        newTable[i] = tableau[i + count];
+    }
+    return newTable
 }
+var tableauRotate = [1, 2, 3, 4, 5, 6, 7, 8];
+console.log(rotate(tableauRotate, 2));
 
 /**
  * Suite de Syracuse
@@ -28,6 +46,20 @@ function rotate(tableau, offset) {
  * Par exemple, pour 14, la suite sera : [14, 7, 22, 11, 34, 17, 52, 26, 13, 40]
  * Pour 1, la suite sera : [1, 4, 2, 1, 4, 2, 1, 4, 2, 1]
  */
-function syracuse(nombre) {
 
+ function syracuse(nombre) {
+    var currentNbre = nombre;
+    var newTable = [];
+    newTable[0] = currentNbre;
+    for (var i = 1; i < 10; i++) {
+        if (currentNbre % 2 === 0) {
+            currentNbre /= 2;
+        }else {
+            currentNbre = currentNbre * 3 + 1;
+        }
+        newTable[i] = currentNbre;
+    }
+    return newTable;
 }
+var syracuseNbre = 14;
+console.log(syracuse(syracuseNbre));

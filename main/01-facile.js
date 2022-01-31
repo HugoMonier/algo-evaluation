@@ -24,7 +24,7 @@ function nombresPairs(nombres) {
 
     let tableau = [1,2,3,4,5,6,7,8,9,10];
         let paires = [];
-        let impaires = [];
+        let impairgit es = [];
     
         for(let i = 0; i < tableau.length; i++){
             if(i % 2 === 0){
