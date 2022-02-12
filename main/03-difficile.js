@@ -14,33 +14,31 @@
  * dire un tableau qui contiendra de petits tableaux qui sont les paires ligne-colonne.
  * 
  */
- function mouvdufou(ligne, colonne) {
-    var newTable = [];
-    var k = 1;
-    while(ligne+k <= 8 && colonne+k <= 8) {
-        newTable.push([ligne+k, colonne+k])
-        k++;
-    }
-    k = 1;
-    while(ligne+k <= 8 && colonne-k >= 1) {
-        newTable.push([ligne+k, colonne+k])
-        k++;
-    }
-    k = 1;
-    while(ligne-k >= 1 && colonne-k >= 1) {
-        newTable.push([ligne+k, colonne+k])
-        k++;
+
+function mouvementsFou(ligne, colonne) {
+    let l;
+    let c;
+    let newTable = [];
+
+    for (l = ligne, c = colonne; l > 1 && c < 8; l--, c++) {
+        newTable.push([l - 1, c + 1]);
     }
 
-    k = 1;
-    while(ligne-k >= 1 && colonne+k <= 8) {
-        newTable.push([ligne+k, colonne+k])
-        k++;
+    for (l = ligne, c = colonne; l < 8 && c > 1; l++, c--) {
+        newTable.push([l + 1, c - 1]);
     }
+
+    for (l = ligne, c = colonne; l < 8 && c < 8; l++, c++) {
+        newTable.push([l + 1, c + 1]);
+    }
+
+    for (l = ligne, c = colonne; l > 1 && c > 1; l--, c--) {
+        newTable.push([l - 1, c - 1]);
+    }
+
     return newTable
 }
-console.log(mouvdufou(6, 6))
-
+console.log(mouvementsFou(3, 4))
 
 
 

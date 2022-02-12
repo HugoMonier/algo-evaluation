@@ -20,22 +20,20 @@ function signe(nombre) {
  * Programmer une fonction prenant en argument un tableau de nombres, et qui renvoie un tableau ne contenant que les nombres pairs.
  * Astuce : un nombre pair est un nombre dont le reste de la division par 2 est 0.
  */
-function nombresPairs(nombres) {
-
+ function nmbrePairs(nombres) {
     let tableau = [1,2,3,4,5,6,7,8,9,10];
-        let paires = [];
-        let impairgit es = [];
-    
-        for(let i = 0; i < tableau.length; i++){
-            if(i % 2 === 0){
-                paires.push(i);
-            } else {
-                impaires.push(i);
-            }
+    let paires = [];
+    let impaires = [];
+
+    for(let i = 0; i < tableau.length; i++){
+        if(i % 2 === 0){
+            paires.push(i);
+        } else {
+            impaires.push(i);
         }
-        console.log(paires);
-        console.log(impaires);
     }
-    console.log(nombresPairs());
+    console.log(paires);
+    console.log(impaires);
 }
+console.log(nmbrePairs());
     
